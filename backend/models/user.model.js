@@ -46,4 +46,9 @@ userSchema.methods.verifyPassword = function(password){
     return bcrypt.compareSync(password,this.password)
 }
 
+userSchema.methods.generateJwt = function(){
+    return jwt.sign({_id:   this._id},
+        process.env.JWT_SECRET)
+}
+
 mongoose.model('User', userSchema);
