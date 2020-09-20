@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module'; // CLI imports AppRoutingModule
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { UserService } from '../app/shared/user.service'
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -24,7 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

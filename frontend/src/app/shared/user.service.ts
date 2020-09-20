@@ -14,9 +14,14 @@ export class UserService {
     password: ''
   };
 
+  noAuthHeader = {headers: new HttpHeaders({"NoAuth":"True"})}
   constructor(public http: HttpClient) { }
 
   postUser(user: User){
-    return this.http.post(environment.apiBaseUrl+'/register',user);
+    return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
+  }
+
+  loginUser(authCredentials){
+    return this.http.post(environment.apiBaseUrl+'/login',authCredentials,this.noAuthHeader);
   }
 }
