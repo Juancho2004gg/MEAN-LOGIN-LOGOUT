@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 var userSchema = new mongoose.Schema({
     fullName: {
@@ -28,6 +29,7 @@ userSchema.path('email').validate((val) => {
     return emailRegex.test(val);
 }, 'Invalid e-mail.');
 
+
 // Events
 userSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
@@ -38,5 +40,10 @@ userSchema.pre('save', function (next) {
         });
     });
 });
+
+//methods
+userSchema.methods.verifyPassword = function(password){
+    return bcrypt.compareSync(password,this.password)
+}
 
 mongoose.model('User', userSchema);

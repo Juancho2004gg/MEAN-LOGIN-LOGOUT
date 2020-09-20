@@ -1,11 +1,13 @@
 require('./config/config');
+require('./config/passportConfig');
 require('./models/db');
 
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors       = require('cors');
+const passport   = require('passport')
 
-const rtsIndex = require('./routes/index.router');
+const rtsIndex   = require('./routes/index.router');
 
 var app = express();
 
