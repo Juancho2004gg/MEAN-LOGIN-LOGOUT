@@ -11,3 +11,8 @@
     </div>
     <input type="submit" value="Sign Up">
 </form>
+
+<!-- Server errors  -->
+<div class="alert" *ngIf="serverErrorMessages">
+{{serverErrorMessages}}
+</div>

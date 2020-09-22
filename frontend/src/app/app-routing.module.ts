@@ -5,6 +5,8 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/signup/signup.component';
 import { SigninComponent} from './user/signin/signin.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'
+import { AuthGuard } from './auth/auth.guard'
+
 const appRoutes: Routes = [
   {
       path: 'signup', component: UserComponent,
@@ -15,7 +17,7 @@ const appRoutes: Routes = [
     children: [{ path: '', component: SigninComponent }]
   },
   {
-    path: 'signup', component: UserProfileComponent
+    path: 'signup', component: UserProfileComponent,canActivate:[AuthGuard]
 },
   {
       path: '', redirectTo: '/login', pathMatch: 'full'

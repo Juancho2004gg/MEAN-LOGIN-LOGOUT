@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const _ = require('lodash');
 const User = mongoose.model('User');
 
 module.exports.register = (req, res, next) => {
@@ -33,4 +33,14 @@ module.exports.authenticate = (req,res,next) =>{
     else
         return res.status(404).json(info)    
     })(req,res)
+}
+
+module.exports.userProfile = (req,res,next) =>{
+    User.findOne({_id:req._id},
+        (err,user)=>{
+            if(!user)
+                return res.status(400).send({status:false, message:"user record not found"})
+            else 
+                return res.status(200).send({status:true,user:_.pick(user,['fullname','email'])})
+        })
 }
