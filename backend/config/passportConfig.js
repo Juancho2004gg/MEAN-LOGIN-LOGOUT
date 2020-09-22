@@ -2,9 +2,7 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 
-
-
-const User = mongoose.model('User')
+var User = mongoose.model('User');
 
 passport.use(
     new localStrategy({ usernameField: 'email' },
