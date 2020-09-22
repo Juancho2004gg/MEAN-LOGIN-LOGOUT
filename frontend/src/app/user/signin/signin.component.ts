@@ -21,7 +21,7 @@ export class SigninComponent implements OnInit {
       this.router.navigateByUrl('/userprofile')
   }
   onSubmit(form:NgForm){
-    return this.userService.loginUser(form.value).subscribe(
+    return this.userService.login(form.value).subscribe(
       res =>{
         this.userService.setToken(res['token']);
         this.router.navigateByUrl('/userprofile')

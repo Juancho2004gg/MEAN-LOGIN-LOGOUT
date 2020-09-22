@@ -21,21 +21,23 @@ export class UserService {
     return this.http.post(environment.apiBaseUrl+'/register',user,this.noAuthHeader);
   }
 
-  loginUser(authCredentials){
-    return this.http.post(environment.apiBaseUrl+'/login',authCredentials,this.noAuthHeader);
+  login(authCredentials){
+    return this.http.post(environment.apiBaseUrl+'/authenticate',authCredentials,this.noAuthHeader);
   }
 
   getUserProfile(){
     return this.http.get(environment.apiBaseUrl+'/userProfile')
   }
   //HELPERS METHODS
-  getToken(){
-    return localStorage.getItem('token');
-  }
   
   setToken(token:string){
     localStorage.setItem('token',token);
   }
+  
+  getToken(){
+    return localStorage.getItem('token');
+  }
+  
   deleteToken(){
     localStorage.removeItem('token');
   }
