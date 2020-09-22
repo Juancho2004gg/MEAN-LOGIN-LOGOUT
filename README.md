@@ -1,2 +1,3 @@
-# IMG-SHARE
-Red social tipo imgur.com
+#MEAN STACK LOGIN AND LOGOUT
+
+Aplicación para registrar y autenticar usuarios
